@@ -1,7 +1,8 @@
 package ru.praktikum.steps;
 
-import io.cucumber.java.ru.Когда;
-import io.cucumber.java.ru.Тогда;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
+import ru.praktikum.utils.RndDataGenerator;
 import ru.praktikum.utils.TestContext;
 import ru.praktikum.pages.AdvertisementPage;
 import ru.praktikum.pages.HeaderPage;
@@ -22,17 +23,17 @@ public class CreateAdSteps {
         this.testContext = testContext;
     }
 
-    @Когда("пользователь создает новое объявление с валидными данными")
+    @When("пользователь создает новое объявление с валидными данными")
     public void iCreateANewAdWithValidData() {
-        adTitle = "Тест " + System.currentTimeMillis();
-        String price = "12345";
+        adTitle = RndDataGenerator.generateRandomAdTitle();
+        String price = RndDataGenerator.generateRandomPrice();
 
         headerPage.clickCreateAdButton();
         createAdPage.createAd(adTitle, price);
         mainPage.waitForPageLoad();
     }
 
-    @Тогда("созданное объявление появляется в списке объявлений пользователя")
+    @Then("созданное объявление появляется в списке объявлений пользователя")
     public void thisAdAppearsInMyAdList() {
         headerPage.clickProfileIcon();
         myProfilePage.waitForPageLoad();

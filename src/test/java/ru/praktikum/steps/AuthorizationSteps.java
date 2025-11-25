@@ -1,6 +1,6 @@
 package ru.praktikum.steps;
 
-import io.cucumber.java.ru.Когда;
+import io.cucumber.java.en.When;
 import ru.praktikum.utils.TestContext;
 import ru.praktikum.pages.HeaderPage;
 import ru.praktikum.pages.LoginPage;
@@ -17,7 +17,7 @@ public class AuthorizationSteps {
         this.testContext = testContext;
     }
 
-    @Когда("пользователь авторизуется со своими учетными данными")
+    @When("пользователь авторизуется со своими учетными данными")
     public void heLogsInWithHisCredentials() {
         if (mainPage.isLogoutButtonVisible()) {
             mainPage.clickLogoutButton();

@@ -1,7 +1,7 @@
 package ru.praktikum.steps;
 
-import io.cucumber.java.ru.Когда;
-import io.cucumber.java.ru.Тогда;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 import ru.praktikum.utils.TestContext;
 import ru.praktikum.pages.RegistrationPage;
 
@@ -16,19 +16,19 @@ public class RegistrationSteps {
         this.testContext = testContext;
     }
 
-    @Когда("пользователь выполняет регистрацию")
+    @When("пользователь выполняет регистрацию")
     public void hePerformsRegistration() {
         registrationPage.openPage();
         registrationPage.register(testContext.getUser());
     }
 
-    @Когда("пользователь пытается зарегистрироваться повторно, используя те же данные")
+    @When("пользователь пытается зарегистрироваться повторно, используя те же данные")
     public void iTryToRegisterAgainWithTheSameData() {
         registrationPage.openPage();
         registrationPage.registerExistingUser(testContext.getUser());
     }
 
-    @Тогда("пользователь видит сообщение об ошибке {string}")
+    @Then("пользователь видит сообщение об ошибке {string}")
     public void iSeeAnErrorMessage(String expectedErrorMessage) {
         String actualErrorMessage = registrationPage.getErrorMessageText();
         assertEquals(expectedErrorMessage, actualErrorMessage);
